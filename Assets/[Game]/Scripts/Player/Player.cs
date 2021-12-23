@@ -83,7 +83,10 @@ namespace _Game_.Scripts.Player
       collectables.Add(collectable);
       StartCoroutine(nameof(StackPulse));
       collectable.transform.SetParent(transform);
-      collectable.transform.localPosition = new Vector3(0, 0, collectables.Count * offsetMultiplier);
+      collectable.transform.localPosition = collectable.Equals(collectables.First())
+        ? new Vector3(playerPivot.localPosition.x, 0, collectables.Count * offsetMultiplier)
+        : new Vector3(collectables[collectables.IndexOf(collectable) - 1].transform.localPosition.x, 0,
+          collectables.Count * offsetMultiplier);
     }
 
     private void WatchTheFront()

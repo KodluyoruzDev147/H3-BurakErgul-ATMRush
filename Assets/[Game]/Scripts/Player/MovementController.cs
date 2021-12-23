@@ -34,7 +34,7 @@ namespace _Game_.Scripts.Player
     {
       var playerPos = player.position;
       playerPos = Vector3.MoveTowards(playerPos, new Vector3(playerPos.x, playerPos.y, playerPos.z + 1f),
-        Time.fixedDeltaTime * forwardSpeed);
+        Time.deltaTime * forwardSpeed);
       player.position = playerPos;
     }
 
